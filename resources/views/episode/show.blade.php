@@ -15,8 +15,21 @@
                     {{$episode->title}}
                 </h1>
                 <div class="text-right flex">
+                    @if($episode->flag && $episode->flag->flag == 1)
+                        <form action="{{ route('episodes.toggleVisibility', $episode->id) }}" method="POST" class="flex flex-1 mb-2" style="margin: 0 0 0 auto">
+                            @csrf
+                            @method('PUT')
+                            <x-primary-button class="bg-sky-700 ml-2">公開中</x-primary-button>
+                        </form>
+                    @else
+                        <form action="{{ route('episodes.toggleVisibility', $episode->id) }}" method="POST" class="flex flex-1 mb-2" style="margin: 0 0 0 auto">
+                            @csrf
+                            @method('PUT')
+                            <x-primary-button class="bg-red-700 ml-2">非公開</x-primary-button>
+                        </form>
+                    @endif
                     @can('update', $episode)
-                    <a href="{{route('episode.edit', $episode)}}" class="flex-1">
+                    <a href="{{route('episode.edit', $episode)}}" class="flex-2">
                         <x-primary-button>
                             編集
                         </x-primary-button>
@@ -24,7 +37,7 @@
                     @endcan
 
                     @can ('delete', $episode)
-                    <form method="post" action="{{route('episode.destroy', $episode)}}" class="flex-2" style="margin: 0 0 0 auto">
+                    <form method="post" action="{{route('episode.destroy', $episode)}}" class="flex-3" style="margin: 0 0 0 auto">
                         @csrf
                         @method('delete')
                         <x-primary-button class="bg-red-700 ml-2">
