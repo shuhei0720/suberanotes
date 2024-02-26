@@ -76,6 +76,8 @@ Route::middleware(['verified'])->group(function() {
     Route::post('episode/comment/store', [CommentController::class, 'store'])
     ->name('comment.store');
 
+    Route::delete('/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+
     // いいねボタン
     Route::get('/nice/nice/{episode}', [NiceController::class, 'nice'])->name('nice');
     Route::get('/nice/unnice/{episode}', [NiceController::class, 'unnice'])->name('unnice');
