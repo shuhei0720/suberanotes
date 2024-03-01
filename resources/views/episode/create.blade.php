@@ -90,7 +90,7 @@
                 </select>
             </div>
 
-            <x-primary-button class="mt-4">
+            <x-primary-button class="mt-4" style="margin-bottom: 20px;">
                 投稿する！
             </x-primary-button>
         </form>

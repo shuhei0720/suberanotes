@@ -85,7 +85,7 @@
                 <textarea name="episode" class="w-auto py-2 border border-gray-400 rounded-md" id="episode" cols="30" rows="10">{{old('episode', $episode->episode)}}</textarea>
             </div>
 
-            <x-primary-button class="mt-4">
+            <x-primary-button class="mt-4" style="margin-bottom: 0px;">
                 完成！
             </x-primary-button>
         </form>
