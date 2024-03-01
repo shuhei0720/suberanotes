@@ -50,6 +50,29 @@
                 <input type="text" name="how" class="w-auto py-2 border border-gray-400 rounded-md shadow-lg hover:shadow-2xl transition duration-500" id="how">
             </div>
 
+            <div id="result" class="mt-4 text-lg"></div>
+
+            <script>
+                // Get specified input elements
+                const specifiedInputs = document.querySelectorAll('#when, #where, #who, #what, #do, #why, #how');
+
+                // Function to update result
+                function updateResult() {
+                    const resultDiv = document.getElementById('result');
+                    const values = [];
+                    specifiedInputs.forEach(input => {
+                        values.push(input.value);
+                    });
+                    // Join values with commas, filtering out empty values
+                    resultDiv.textContent = values.filter(value => value.trim() !== '').join('、');
+                }
+
+                // Add event listener to each specified input for input event
+                specifiedInputs.forEach(input => {
+                    input.addEventListener('input', updateResult);
+                });
+            </script>
+
             <div class="w-full flex flex-col">
                 <label for="point" class="font-semibold mt-4 text-blue-800 text-lg">この話で一番共感してほしい、または、一番面白いポイントは？</label>
                 <input type="text" name="point" class="w-auto py-2 border border-gray-400 rounded-md shadow-lg hover:shadow-2xl transition duration-500" id="point">
